@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="controle.financa" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="www.sanseven.com">
-    <name>Controle</name>
+    <name>ControlMax</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="sanseven@ionicframework.com" href="http://sanseven.com/">SanSeven Team</author>
     <content src="index.html" />
