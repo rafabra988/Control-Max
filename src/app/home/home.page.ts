@@ -59,7 +59,7 @@ export class HomePage implements OnInit{
   test(){
     //document.getElementById('mes').onchange
     this.inputValue = (<HTMLInputElement>document.getElementById("mes")).value;
-    console.log(this.inputValue)
+    //console.log(this.inputValue)
     if(this.inputValue == "20"){
      
     }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ModalPageModule } from './modal/modal.module';
 import { NovogastoPageModule } from './novogasto/novogasto.module';
 import { IonicStorageModule } from '@ionic/storage';
+import { IntroPage } from './intro/intro.page';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicStorageModule.forRoot()
   ],
   providers: [
+    IntroPage,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

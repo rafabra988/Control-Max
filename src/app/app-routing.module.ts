@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'novogasto', loadChildren: './novogasto/novogasto.module#NovogastoPageModule' },
+  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' }
 ];
 
 @NgModule({
