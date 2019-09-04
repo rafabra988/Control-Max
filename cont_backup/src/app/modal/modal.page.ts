@@ -31,6 +31,12 @@ export class ModalPage  {
     this.storageService.listaRegistros().then(registros =>{
       this.registros = registros;
       if(registros.length !== 0){
+        /*let texto = "Nenhuma compra foi adicionada ainda";
+        let html = document.getElementById("test").innerHTML;
+
+        html=html+"<p>"+texto+"</p>";
+        document.getElementById("test").innerHTML = html;
+        document.getElementById("test").style.display = "block";*/
         document.getElementById("test").style.display = "none";
       }else{
         document.getElementById("test").style.display = "block";

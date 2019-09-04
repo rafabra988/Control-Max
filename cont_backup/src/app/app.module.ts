@@ -10,7 +10,6 @@ import { ModalPageModule } from './modal/modal.module';
 import { NovogastoPageModule } from './novogasto/novogasto.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from './intro/intro.page';
-import { AjustesPage } from './ajustes/ajustes.page';
 
 @NgModule({
   declarations: [
@@ -21,16 +20,13 @@ import { AjustesPage } from './ajustes/ajustes.page';
   ],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot({
-      backButtonText: 'Voltar',
-    }), 
+    IonicModule.forRoot(), 
     AppRoutingModule,
     ModalPageModule,
     NovogastoPageModule,
     IonicStorageModule.forRoot()
   ],
   providers: [
-    AjustesPage,
     IntroPage,
     StatusBar,
     SplashScreen,

@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalController, Platform } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { animacaoEntrada } from '../testeAnimacao/entrar';
 import { anicacaoSaida } from '../testeAnimacao/sair';
 import { NovogastoPage } from '../novogasto/novogasto.page';
-import { registro } from '../services/storage.service';
-import { IonList } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
+import { StorageService, registro } from '../services/storage.service';
+import { Platform, ToastController, IonList } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -24,33 +23,21 @@ export class HomePage implements OnInit{
   Clock = Date.now();
   
   inputValue :string;
-  salarioatual:number;
-  moeda:string;
   
   
-  constructor(public modalController: ModalController, private storage:Storage, private plt:Platform) {
+  constructor(public modalController: ModalController,private storageService: StorageService, private plt: Platform, private toastController: ToastController) {
     
   }
-
-  formatter = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2,
-  });
-
-  ngOnInit() {
-    var hammertime = new Hammer(document.body);
-    hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-    
-    setInterval(() => {
-      this.Clock = Date.now();
-      this.test()
-    }, 1000);
-      
-    this.plt.ready().then(()=>{
-      this.pegarSalario();
-    }) 
-  }
+      ngOnInit() {
+        var hammertime = new Hammer(document.body);
+        hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+        
+        setInterval(() => {
+          this.Clock = Date.now();
+          this.test()
+        }, 1000);
+         
+      }
 
   async presentModal() {
     const modal = await this.modalController.create({
@@ -80,14 +67,6 @@ export class HomePage implements OnInit{
 
   fechar() {
     this.modalController.dismiss();
-  }
-
-  pegarSalario(){
-    this.storage.get('salario').then((val) => {
-      this.salarioatual = val;
-      this.moeda = this.formatter.format(this.salarioatual);
-      console.log(this.moeda)
-    });
   }
 
 

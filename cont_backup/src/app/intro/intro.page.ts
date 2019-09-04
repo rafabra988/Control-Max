@@ -10,7 +10,6 @@ import { Storage } from '@ionic/storage';
 export class IntroPage implements OnInit {
 
   salario:string;
-  //moeda:number;
 
   constructor(    
     private storage: Storage,
@@ -22,9 +21,7 @@ export class IntroPage implements OnInit {
 
   pegarSalario(){
     this.salario = (<HTMLInputElement>document.getElementById("salario")).value;
-    let moeda = parseFloat(this.salario);
-    console.log(moeda)
-    this.storage.set('salario', moeda)
+    this.storage.set('salario', this.salario)
     this.rootPage.navigateByUrl("/home")
   }
 

@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajustar salário</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>Novo salário</h3>
+  <ion-input type="number" id="salario" placeholder="digite o novo salário"></ion-input>
+  <ion-button (click)="setSalario()"></ion-button>
+  <p>Seu salario atual é de {{ moeda }}</p>
+</ion-content>

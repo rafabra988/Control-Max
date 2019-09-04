@@ -1,0 +1,34 @@
+<ion-content>
+<div class="icon">
+    <ion-icon class="close" name="close" (click)="fechar()" ></ion-icon>
+</div>
+
+<div class="campo">
+
+  <ion-list #mylist>
+    
+    <ion-list-header>
+      <ion-label>Compras</ion-label>
+    </ion-list-header>
+    <p  id="test">Nenhuma compra foi adicionada ainda</p>
+    
+        <ion-item-sliding *ngFor="let registro of registros">     
+          <ion-item>
+            <ion-label text-wrap>
+              <h3>{{ registro.lugar }}</h3>
+              <ion-text color="secondary">
+                <p>{{ registro.valor }}</p>
+              </ion-text>
+            </ion-label>
+            <ion-icon name="trash" (click)="deletarRegistro(registro)"></ion-icon>
+
+          </ion-item>
+        </ion-item-sliding>
+        
+      </ion-list>
+</div>
+      
+      <!--<ion-button (click)="testii()">teste</ion-button>-->
+      
+    </ion-content>
+    

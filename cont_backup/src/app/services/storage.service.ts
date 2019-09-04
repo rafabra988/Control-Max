@@ -31,6 +31,7 @@ export class StorageService {
     return this.storage.get(REGISTRO_KEY);
   }
 
+
   deletarRegistro(id:number): Promise<registro>{
     return this.storage.get(REGISTRO_KEY).then((registros:registro[]) => {
       if(!registros || registros.length === 0){

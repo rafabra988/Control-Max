@@ -1,0 +1,64 @@
+ion-toolbar,
+ion-content {
+    --background: #993399; 
+ }
+
+ ion-title{
+     color:white;
+ }
+
+ .iontes{
+     background: white;
+     width: 80%;
+     height: 50%;
+     border-radius: 10%;
+     margin-top: 20%;
+     margin-left: auto;
+     margin-right: auto;
+     display: block;
+     -webkit-box-shadow: 0px 0px 21px 4px rgba(0,0,0,0.54);
+     -moz-box-shadow: 0px 0px 21px 4px rgba(0,0,0,0.54);
+     box-shadow: 0px 0px 21px 4px rgba(0,0,0,0.54);
+ }
+
+ @media (min-width: 400px) {
+    .iontes{
+        height: 60%;
+    }
+ }
+
+ .vicon{
+     position: absolute;
+     color: white !important;
+     top: 90%;
+     left: 85%;
+     border: none;
+     width: 30px;
+     height: 30px;
+     border: none;
+ }
+
+ .icon{
+    width: 15px;
+    height: 15px;
+    display: block;
+    margin-left: 23%;
+    margin-top: 23%;
+ }
+ 
+ .baddd{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: none;
+    left:45%;
+    top: 83%;
+ }
+
+ .badd{
+     color: white;
+     width: 30px;
+     height: 30px;
+     margin-left: 10%;
+     margin-top: 10%;
+ }
