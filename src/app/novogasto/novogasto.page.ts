@@ -35,11 +35,14 @@ export class NovogastoPage implements OnInit {
 
   addRegistro(){
     this.novoRegistro.id = Date.now();
+    this.novoRegistro.modificado = Date.now();
 
     this.storageService.addRegistro(this.novoRegistro).then(registro => {
       this.novoRegistro = <registro>{};
       this.showToast('Compra Adicionada!')
-
+    })
+    this.storageService.addhistoric(this.novoRegistro).then(registro => {
+      this.novoRegistro = <registro>{};
     })
   }
 

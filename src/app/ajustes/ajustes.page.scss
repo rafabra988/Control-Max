@@ -1,3 +1,12 @@
 ion-back-button{
     --color: #993399; 
 }
+
+.baixo{
+    color:var(--ion-color-step-600,#666);
+    font-size: 14px;
+    line-height: 20px;
+    text-overflow: inherit;
+    overflow: inherit;
+}
+

@@ -4,10 +4,12 @@ import { Storage } from '@ionic/storage';
 export interface registro{
   id:number,
   lugar: string,
-  valor: number
+  valor: number,
+  modificado:number;
 }
 
 const REGISTRO_KEY = 'meus-registros';
+const historico_KEY = 'historico';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,17 @@ export class StorageService {
         return this.storage.set(REGISTRO_KEY, registros);
       }else{
         return this.storage.set(REGISTRO_KEY, [registro]);
+      }
+    });
+  }
+
+  addhistoric(registro:registro): Promise<any>{
+    return this.storage.get(historico_KEY).then((registros:registro[]) => {
+      if(registros){
+        registros.push(registro);
+        return this.storage.set(historico_KEY, registros);
+      }else{
+        return this.storage.set(historico_KEY, [registro]);
       }
     });
   }

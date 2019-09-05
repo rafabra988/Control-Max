@@ -23,7 +23,9 @@ export class AjustesPage implements OnInit {
   });
   
   ngOnInit() {
-    this.pegarSalario()
+    setInterval(() => {
+      this.pegarSalario()
+    }, 100);
   }
 
   ionViewWillEnter() {

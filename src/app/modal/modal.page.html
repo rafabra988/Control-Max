@@ -11,7 +11,13 @@
       <ion-label>Compras</ion-label>
     </ion-list-header>
     <p  id="test">Nenhuma compra foi adicionada ainda</p>
-    
+
+
+    <div id="right">{{Clock | date:'dd/MM/yyyy HH:mm:ss'}}</div>
+      <br>
+      <input value="{{Clock | date:'dd'}}" id="mes">
+
+
         <ion-item-sliding *ngFor="let registro of registros">     
           <ion-item>
             <ion-label text-wrap>
@@ -19,6 +25,7 @@
               <ion-text color="secondary">
                 <p>{{ registro.valor }}</p>
               </ion-text>
+              <p>{{ registro.modificado | date:'short'}}</p>
             </ion-label>
             <ion-icon name="trash" (click)="deletarRegistro(registro)"></ion-icon>
 

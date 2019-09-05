@@ -16,21 +16,14 @@ import { Storage } from '@ionic/storage';
 export class HomePage implements OnInit{
 
   registros: registro[] = [];
-
-  @ViewChild('mylist', {static: false})mylist: IonList;
-
-  novoRegistro: registro = <registro>{};
-
-  Clock = Date.now();
   
-  inputValue :string;
   salarioatual:number;
   moeda:string;
+  i:number;
+  storageService: any;
   
   
-  constructor(public modalController: ModalController, private storage:Storage, private plt:Platform) {
-    
-  }
+  constructor(public modalController: ModalController, private storage:Storage) { }
 
   formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -43,14 +36,23 @@ export class HomePage implements OnInit{
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
     
     setInterval(() => {
-      this.Clock = Date.now();
-      this.test()
-    }, 1000);
-      
-    this.plt.ready().then(()=>{
       this.pegarSalario();
-    }) 
+    }, 1000);
+    
+    // this.plt.ready().then(()=>{
+      //this.pegarSalario();
+   //}) 
   }
+  
+  /*ois(){
+    this.storageService.listaRegistros().then(registros =>{
+    this.registros = registros;
+    console.log(this.registros.length)
+    //for(this.i = 0; this.i < this.registros.length; this.i++){
+      //console.log("test")
+     //} 
+    });
+  }*/
 
   async presentModal() {
     const modal = await this.modalController.create({
@@ -68,16 +70,6 @@ export class HomePage implements OnInit{
     return await modal.present();
   }
 
-
-  test(){
-    //document.getElementById('mes').onchange
-    this.inputValue = (<HTMLInputElement>document.getElementById("mes")).value;
-    //console.log(this.inputValue)
-    if(this.inputValue == "20"){
-     
-    }
-  }
-
   fechar() {
     this.modalController.dismiss();
   }
@@ -86,7 +78,7 @@ export class HomePage implements OnInit{
     this.storage.get('salario').then((val) => {
       this.salarioatual = val;
       this.moeda = this.formatter.format(this.salarioatual);
-      console.log(this.moeda)
+      //console.log(this.moeda)
     });
   }
 

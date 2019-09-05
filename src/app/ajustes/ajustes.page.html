@@ -9,7 +9,7 @@
 
 <ion-content>
   <h3>Novo salário</h3>
-  <ion-input type="number" id="salario" placeholder="digite o novo salário"></ion-input>
-  <ion-button (click)="setSalario()"></ion-button>
-  <p>Seu salario atual é de {{ moeda }}</p>
+  <ion-input type="number" id="salario" class="inp" placeholder="digite o novo salário"></ion-input>
+  <ion-button (click)="setSalario()" fill="clear"> confirmar </ion-button>
+  <p class="baixo">Seu salario atual é de {{ moeda }}</p>
 </ion-content>

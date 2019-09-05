@@ -20,7 +20,7 @@ export class IntroPage implements OnInit {
   }
   
 
-  pegarSalario(){
+  setSalario(){
     this.salario = (<HTMLInputElement>document.getElementById("salario")).value;
     let moeda = parseFloat(this.salario);
     console.log(moeda)
