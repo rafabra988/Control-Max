@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content (swiperight)="fechar()">
   <h3>Novo salário</h3>
   <ion-input type="number" id="salario" class="inp" placeholder="digite o novo salário"></ion-input>
   <ion-button (click)="setSalario()" fill="clear"> confirmar </ion-button>

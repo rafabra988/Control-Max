@@ -21,6 +21,7 @@ export class HomePage implements OnInit{
   moeda:string;
   i:number;
   storageService: any;
+  testii:string;
   
   
   constructor(public modalController: ModalController, private storage:Storage) { }
@@ -39,6 +40,7 @@ export class HomePage implements OnInit{
       this.pegarSalario();
     }, 1000);
     
+    this.total();
     // this.plt.ready().then(()=>{
       //this.pegarSalario();
    //}) 
@@ -53,6 +55,12 @@ export class HomePage implements OnInit{
      //} 
     });
   }*/
+
+  total(){
+    this.storage.get("total").then((soma) =>{
+      this.testii = this.formatter.format(soma);
+    })
+  }
 
   async presentModal() {
     const modal = await this.modalController.create({

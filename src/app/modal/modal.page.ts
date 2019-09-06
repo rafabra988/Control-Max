@@ -9,12 +9,11 @@ import { Storage } from '@ionic/storage';
   templateUrl: './modal.page.html',
   styleUrls: ['./modal.page.scss'],
 })
-export class ModalPage implements OnInit {
+export class ModalPage {
 
   registros: registro[] = [];
-  i:number;
-  Clock = Date.now();
-  inputValue :string;
+  parar:any;
+  total:number;
 
   @ViewChild('mylist', {static: false})mylist: IonList;
   
@@ -24,25 +23,25 @@ export class ModalPage implements OnInit {
     })
   }
 
-  ngOnInit(){
-    setInterval(() => {
-      this.Clock = Date.now();
-    }, 1000);
+  ionViewWillEnter(){
+    this.listarRegistros();
   }
-  
-  parar = setInterval(() => {
-      this.listarRegistros();
-      this.trocademestest();
-  }, 500);
   
   fechar() {
     clearInterval(this.parar)
     this.modalController.dismiss();
   }
+  batata(){
 
+  }
   listarRegistros(){
     this.storageService.listaRegistros().then(registros =>{
       this.registros = registros;
+      this.total = 0;
+      registros.forEach(element => {
+        this.total += element.valor;
+      });
+      this.storage.set("total", this.total)
       if(registros.length !== 0){
         document.getElementById("test").style.display = "none";
       }else{
@@ -70,13 +69,5 @@ export class ModalPage implements OnInit {
     toast.present();
   }
 
-
-  trocademestest(){
-      this.inputValue = (<HTMLInputElement>document.getElementById("mes")).value;
-      if(this.inputValue == "01"){
-        this.storage.set("meus-registros", [])
-      }
-      let test = Date.now()
-  }
 
 }

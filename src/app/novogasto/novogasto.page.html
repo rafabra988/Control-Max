@@ -6,24 +6,19 @@
 
 <ion-content (swipedown)="fechar()">
 
-      <ion-item>
-        <ion-label position="fixed">Lugar:</ion-label>
-        <ion-input [(ngModel)]="novoRegistro.lugar"></ion-input>
-      </ion-item>
-     
-      <ion-item>
-        <ion-label position="fixed">Valor:</ion-label>
-        <ion-input [(ngModel)]="novoRegistro.valor" type="number"></ion-input>
-      </ion-item>
-     
-      <ion-button expand="full" (click)="addRegistro()">Adicionar</ion-button>
+  <ion-item>
+    <ion-label position="fixed">Lugar:</ion-label>
+    <ion-input [(ngModel)]="novoRegistro.lugar"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="fixed">Valor:</ion-label>
+    <ion-input [(ngModel)]="novoRegistro.valor" type="number"></ion-input>
+  </ion-item>
+  
+  <ion-button expand="full" (click)="addRegistro()" fill="clear">Adicionar</ion-button>
       
-      <ion-item>
-        <ion-input [(ngModel)]="inputtext" placeholder="meu pau"> </ion-input>
-      </ion-item>
-      <ion-button (click)="saveData()">s</ion-button>
-      <ion-button (click)="loadData()">l</ion-button>
-
-      <ion-icon class="arrow" src="./assets/_ionicons_svg_ios-arrow-down.svg" (click)="fechar()" ></ion-icon>
-
 </ion-content>
+<ion-footer>
+  <ion-icon class="arrow" src="./assets/_ionicons_svg_ios-arrow-down.svg" (click)="fechar()" ></ion-icon>
+</ion-footer>

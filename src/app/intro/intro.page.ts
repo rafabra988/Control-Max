@@ -23,9 +23,15 @@ export class IntroPage implements OnInit {
   setSalario(){
     this.salario = (<HTMLInputElement>document.getElementById("salario")).value;
     let moeda = parseFloat(this.salario);
-    console.log(moeda)
-    this.storage.set('salario', moeda)
-    this.rootPage.navigateByUrl("/home")
+    if(isNaN(moeda)){
+      console.log(moeda)
+      this.storage.set('salario', 0)
+      this.rootPage.navigateByUrl("/home")
+    }else{
+      console.log(moeda)
+      this.storage.set('salario', moeda)
+      this.rootPage.navigateByUrl("/home")
+    }
   }
 
 }

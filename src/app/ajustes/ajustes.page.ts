@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, NavController } from '@ionic/angular';
 import { HomePage } from '../home/home.page';
 
 @Component({
@@ -14,7 +14,7 @@ export class AjustesPage implements OnInit {
   salarioatual:number;
   moeda:string;
 
-  constructor(private storage:Storage, private home:HomePage) { }
+  constructor(private storage:Storage, private home:HomePage, private nav:NavController) { }
   
   formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -30,6 +30,10 @@ export class AjustesPage implements OnInit {
 
   ionViewWillEnter() {
     
+  }
+
+  fechar() {
+    this.nav.pop()
   }
 
   pegarSalario(){
