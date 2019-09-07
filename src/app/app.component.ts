@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { IntroPage } from './intro/intro.page';
+import { ModalPage } from './modal/modal.page';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit{
   Clock = Date.now();
   inputValue :string;
 
-  constructor(private platform: Platform,private splashScreen: SplashScreen,private statusBar: StatusBar,private storage: Storage,private rootPage:Router,private btn:IntroPage, private alertController:AlertController) {
+  constructor(private platform: Platform,private splashScreen: SplashScreen,private statusBar: StatusBar,private storage: Storage,private rootPage:Router, private alertController:AlertController, private soma:ModalPage) {
     this.initializeApp();
 
 
@@ -40,7 +41,10 @@ export class AppComponent implements OnInit{
       this.trocademestest();
     }, 1000);
   }
-
+  
+  ionViewWillEnter(){
+    this.soma.soma();
+  }
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

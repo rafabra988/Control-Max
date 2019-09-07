@@ -17,7 +17,6 @@ export class HomePage implements OnInit{
 
   registros: registro[] = [];
   
-  salarioatual:number;
   moeda:string;
   i:number;
   storageService: any;
@@ -33,6 +32,7 @@ export class HomePage implements OnInit{
   });
 
   ngOnInit() {
+    //habilitar swipe em todas a direções
     var hammertime = new Hammer(document.body);
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
     
@@ -40,12 +40,11 @@ export class HomePage implements OnInit{
       this.pegarSalario();
     }, 1000);
     
-    this.total();
     // this.plt.ready().then(()=>{
       //this.pegarSalario();
    //}) 
   }
-  
+
   /*ois(){
     this.storageService.listaRegistros().then(registros =>{
     this.registros = registros;
@@ -55,12 +54,6 @@ export class HomePage implements OnInit{
      //} 
     });
   }*/
-
-  total(){
-    this.storage.get("total").then((soma) =>{
-      this.testii = this.formatter.format(soma);
-    })
-  }
 
   async presentModal() {
     const modal = await this.modalController.create({
@@ -84,9 +77,11 @@ export class HomePage implements OnInit{
 
   pegarSalario(){
     this.storage.get('salario').then((val) => {
-      this.salarioatual = val;
-      this.moeda = this.formatter.format(this.salarioatual);
-      //console.log(this.moeda)
+      this.moeda = this.formatter.format(val);
+      this.storage.get("total").then((soma) =>{
+      this.testii = this.formatter.format(soma);
+      console.log(this.testii)
+      })
     });
   }
 

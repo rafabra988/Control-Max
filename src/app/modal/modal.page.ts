@@ -31,17 +31,18 @@ export class ModalPage {
     clearInterval(this.parar)
     this.modalController.dismiss();
   }
-  batata(){
 
+  soma(){
+    this.registros.forEach(element => {
+      this.total += element.valor;
+    });
+    this.storage.set("total", this.total)
   }
+
   listarRegistros(){
     this.storageService.listaRegistros().then(registros =>{
       this.registros = registros;
       this.total = 0;
-      registros.forEach(element => {
-        this.total += element.valor;
-      });
-      this.storage.set("total", this.total)
       if(registros.length !== 0){
         document.getElementById("test").style.display = "none";
       }else{

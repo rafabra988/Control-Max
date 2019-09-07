@@ -11,6 +11,7 @@ import { NovogastoPageModule } from './novogasto/novogasto.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from './intro/intro.page';
 import { AjustesPage } from './ajustes/ajustes.page';
+import { ModalPage } from './modal/modal.page';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AjustesPage } from './ajustes/ajustes.page';
     IonicStorageModule.forRoot()
   ],
   providers: [
+    ModalPage,
     AjustesPage,
     IntroPage,
     StatusBar,
