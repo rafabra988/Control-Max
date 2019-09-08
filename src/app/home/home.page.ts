@@ -5,7 +5,6 @@ import { animacaoEntrada } from '../testeAnimacao/entrar';
 import { anicacaoSaida } from '../testeAnimacao/sair';
 import { NovogastoPage } from '../novogasto/novogasto.page';
 import { registro } from '../services/storage.service';
-import { IonList } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -18,7 +17,6 @@ export class HomePage implements OnInit{
   registros: registro[] = [];
   
   moeda:string;
-  i:number;
   storageService: any;
   testii:string;
   
@@ -45,16 +43,6 @@ export class HomePage implements OnInit{
    //}) 
   }
 
-  /*ois(){
-    this.storageService.listaRegistros().then(registros =>{
-    this.registros = registros;
-    console.log(this.registros.length)
-    //for(this.i = 0; this.i < this.registros.length; this.i++){
-      //console.log("test")
-     //} 
-    });
-  }*/
-
   async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPage,
@@ -78,11 +66,11 @@ export class HomePage implements OnInit{
   pegarSalario(){
     this.storage.get('salario').then((val) => {
       this.moeda = this.formatter.format(val);
-      this.storage.get("total").then((soma) =>{
-      this.testii = this.formatter.format(soma);
-      console.log(this.testii)
-      })
     });
+    this.storage.get("total").then((soma) =>{
+      this.testii = this.formatter.format(soma);
+      //console.log(this.testii)
+    })
   }
 
 

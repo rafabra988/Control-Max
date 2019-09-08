@@ -1,22 +1,29 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <ion-title>novogasto</ion-title>
+    <ion-title text-center></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content (swipedown)="fechar()">
 
-  <ion-item>
-    <ion-label position="fixed">Lugar:</ion-label>
-    <ion-input [(ngModel)]="novoRegistro.lugar"></ion-input>
-  </ion-item>
+  <h5 class="title">Adicionar novo gasto</h5>
+
   
-  <ion-item>
-    <ion-label position="fixed">Valor:</ion-label>
-    <ion-input [(ngModel)]="novoRegistro.valor" type="number"></ion-input>
-  </ion-item>
-  
-  <ion-button expand="full" (click)="addRegistro()" fill="clear">Adicionar</ion-button>
+  <div class="caixa">
+    <form [formGroup]="ngasto">
+      <ion-item lines="none">
+        <ion-label text-wrap>Lugar:</ion-label>
+        <ion-input [(ngModel)]="novoRegistro.lugar" formControlName="lugar" placeholder="Digite o lugar da compra"></ion-input>
+      </ion-item>
+      
+      <ion-item lines="none">
+        <ion-label text-wrap>Valor:</ion-label>
+        <ion-input [(ngModel)]="novoRegistro.valor" formControlName="valor" type="number" placeholder="Digite o valor da compra"></ion-input>
+      </ion-item>
+      
+      <ion-button expand="full" [disabled]="ngasto.invalid" (click)="addRegistro()" fill="clear">Adicionar</ion-button>
+    </form>
+    </div>
       
 </ion-content>
 <ion-footer>

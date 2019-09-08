@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { PopoverController, NavController } from '@ionic/angular';
-import { HomePage } from '../home/home.page';
+import { NavController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ajustes',
@@ -14,7 +14,9 @@ export class AjustesPage implements OnInit {
   salarioatual:number;
   moeda:string;
 
-  constructor(private storage:Storage, private home:HomePage, private nav:NavController) { }
+  nsalario:FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private storage:Storage, private nav:NavController) { }
   
   formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -26,6 +28,17 @@ export class AjustesPage implements OnInit {
     setInterval(() => {
       this.pegarSalario()
     }, 100);
+
+    this.nsalario = this.formBuilder.group({
+      salario: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(50)
+        ],
+      ]
+    })
   }
 
   ionViewWillEnter() {

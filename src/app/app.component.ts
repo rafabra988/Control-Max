@@ -4,8 +4,9 @@ import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
-import { IntroPage } from './intro/intro.page';
 import { ModalPage } from './modal/modal.page';
+import { HomePage } from 'cont_backup/src/app/home/home.page';
+import { ModalPageModule } from './modal/modal.module';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit{
   Clock = Date.now();
   inputValue :string;
 
-  constructor(private platform: Platform,private splashScreen: SplashScreen,private statusBar: StatusBar,private storage: Storage,private rootPage:Router, private alertController:AlertController, private soma:ModalPage) {
+  constructor(private platform: Platform,private splashScreen: SplashScreen,private statusBar: StatusBar,private storage: Storage,private rootPage:Router, private alertController:AlertController, private soma:ModalPage, private modal:ModalPage) {
     this.initializeApp();
 
 
@@ -33,18 +34,15 @@ export class AppComponent implements OnInit{
     });
   }
 
+  
   ngOnInit(){
-    //this.storage.set("meus-registros", [])
-
     setInterval(() => {
       this.Clock = Date.now();
       this.trocademestest();
+      this.modal.listarRegistros();
     }, 1000);
   }
   
-  ionViewWillEnter(){
-    this.soma.soma();
-  }
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

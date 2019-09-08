@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: './modal.page.html',
   styleUrls: ['./modal.page.scss'],
 })
-export class ModalPage {
+export class ModalPage implements OnInit{
 
   registros: registro[] = [];
   parar:any;
@@ -23,35 +23,38 @@ export class ModalPage {
     })
   }
 
+  ngOnInit(){
+    this.parar = setInterval(() => {
+      this.msg();
+    }, 1);
+  }
+
   ionViewWillEnter(){
     this.listarRegistros();
   }
-  
+
+  msg(){
+    if(this.registros.length !== 0){
+      document.getElementById("test").style.display = "none";
+    }else{
+      document.getElementById("test").style.display = "block";
+    }
+  }
+
   fechar() {
     clearInterval(this.parar)
     this.modalController.dismiss();
-  }
-
-  soma(){
-    this.registros.forEach(element => {
-      this.total += element.valor;
-    });
-    this.storage.set("total", this.total)
   }
 
   listarRegistros(){
     this.storageService.listaRegistros().then(registros =>{
       this.registros = registros;
       this.total = 0;
-      if(registros.length !== 0){
-        document.getElementById("test").style.display = "none";
-      }else{
-        document.getElementById("test").style.display = "block";
-      }
-      //for(this.i = 0; this.i < this.registros.length; this.i++){
-        //let abcd =+ registros.values 
-      //} 
-    });
+      this.registros.forEach(element => {
+        this.total += element.valor;
+      });
+      this.storage.set("total", this.total)
+      });
   }
 
   deletarRegistro(registro:registro){

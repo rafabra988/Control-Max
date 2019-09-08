@@ -4,6 +4,7 @@ import { registro } from '../services/storage.service';
 import { StorageService } from '../services/storage.service';
 import { ToastController} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,17 +16,37 @@ export class NovogastoPage implements OnInit {
 
 
   novoRegistro: registro = <registro>{};
+  ngasto: FormGroup;
 
   constructor(public modalController: ModalController,
     private storageService: StorageService, 
     private toastController: ToastController,
-    private storage:Storage) { }
+    private storage:Storage,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     //habilitar o hammerjs em todas as direções
     var hammertime = new Hammer(document.body);
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
+    this.ngasto = this.formBuilder.group({
+      lugar: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(100)
+        ],
+      ],
+      valor: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(50)
+        ],
+      ]
+    })
   }
 
   //função para fechar modal
@@ -36,7 +57,7 @@ export class NovogastoPage implements OnInit {
   addRegistro(){
     this.novoRegistro.id = Date.now();
     this.novoRegistro.modificado = Date.now();
-
+    
     this.storageService.addRegistro(this.novoRegistro).then(registro => {
       this.novoRegistro = <registro>{};
       this.showToast('Compra Adicionada!')

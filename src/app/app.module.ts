@@ -12,6 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from './intro/intro.page';
 import { AjustesPage } from './ajustes/ajustes.page';
 import { ModalPage } from './modal/modal.page';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
