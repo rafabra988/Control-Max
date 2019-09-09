@@ -21,7 +21,7 @@ export class HomePage implements OnInit{
   testii:string;
   
   
-  constructor(public modalController: ModalController, private storage:Storage) { }
+  constructor(public modalController: ModalController, private storage:Storage, private modal:ModalPage) { }
 
   formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -36,11 +36,20 @@ export class HomePage implements OnInit{
     
     setInterval(() => {
       this.pegarSalario();
+      this.total();
+      this.modal.listarRegistros();
     }, 1000);
     
     // this.plt.ready().then(()=>{
       //this.pegarSalario();
    //}) 
+  }
+  
+
+  total(){
+    this.storage.get("total").then((soma) =>{
+      this.testii = this.formatter.format(soma);
+    })
   }
 
   async presentModal() {
