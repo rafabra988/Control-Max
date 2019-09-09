@@ -19,6 +19,9 @@ export class HomePage implements OnInit{
   moeda:string;
   storageService: any;
   testii:string;
+  balanco:number;
+  a:number; 
+  b:number;
   
   
   constructor(public modalController: ModalController, private storage:Storage, private modal:ModalPage) { }
@@ -43,6 +46,19 @@ export class HomePage implements OnInit{
     // this.plt.ready().then(()=>{
       //this.pegarSalario();
    //}) 
+   this.balancos();
+  }
+
+  balancos(){
+    this.storage.get("salario").then((a1) => {
+       this.a= a1
+       console.log(this.a)
+    })
+    this.storage.get("total").then((b1) => {
+       this.b= b1
+    })
+    this.balanco = this.a - this.b;
+    console.log(this.balanco)
   }
   
 

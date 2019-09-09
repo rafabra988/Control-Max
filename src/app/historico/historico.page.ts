@@ -47,7 +47,7 @@ export class HistoricoPage implements OnInit {
       this.showToast('Compra Deletada!');
       this.mylist.closeSlidingItems();
       this.listarHistorico();
-    })
+    });
   }
 
   async showToast(msg) {
