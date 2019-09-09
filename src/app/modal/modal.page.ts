@@ -1,8 +1,9 @@
-import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { StorageService, registro } from '../services/storage.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -17,10 +18,8 @@ export class ModalPage implements OnInit{
 
   @ViewChild('mylist', {static: false})mylist: IonList;
   
-  constructor(private modalController: ModalController,private storageService: StorageService, private toastController: ToastController, private plt: Platform, private storage:Storage) {
-    this.plt.ready().then(()=>{
-      this.listarRegistros();
-    })
+  constructor(private modalController: ModalController,private router:Router , private storageService: StorageService, private toastController: ToastController, private storage:Storage) {
+  
   }
 
   ngOnInit(){
@@ -34,11 +33,11 @@ export class ModalPage implements OnInit{
   }
 
   msg(){
-    if(this.registros.length !== 0){
-      document.getElementById("test").style.display = "none";
-    }else{
-      document.getElementById("test").style.display = "block";
-    }
+      if(this.registros.length !== 0){
+        document.getElementById("test").style.display = "none";
+      }else{
+        document.getElementById("test").style.display = "block";
+      }
   }
 
   fechar() {
@@ -50,11 +49,12 @@ export class ModalPage implements OnInit{
     this.storageService.listaRegistros().then(registros =>{
       this.registros = registros;
       this.total = 0;
-      this.registros.forEach(element => {
-        this.total += element.valor;
-      });
-      this.storage.set("total", this.total)
-      });
+        this.registros.forEach(element => {
+          this.total += element.valor;
+        });
+        this.storage.set("total", this.total)
+        } 
+    );
   }
 
   deletarRegistro(registro:registro){
@@ -73,5 +73,10 @@ export class ModalPage implements OnInit{
     toast.present();
   }
 
+  chahistorico(){
+    clearInterval(this.parar)
+    this.modalController.dismiss();
+    this.router.navigateByUrl('historico')
+  }
 
 }

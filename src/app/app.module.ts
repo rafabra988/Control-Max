@@ -25,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule, 
     IonicModule.forRoot({
       backButtonText: 'Voltar',
+      //mode: 'md',
     }), 
     AppRoutingModule,
     ModalPageModule,

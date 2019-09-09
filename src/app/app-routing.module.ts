@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
   { path: 'sobre', loadChildren: './sobre/sobre.module#SobrePageModule' },
   { path: 'ajustes', loadChildren: './ajustes/ajustes.module#AjustesPageModule' },
+  { path: 'historico', loadChildren: './historico/historico.module#HistoricoPageModule' },
 ];
 
 @NgModule({

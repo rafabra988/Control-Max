@@ -5,8 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { ModalPage } from './modal/modal.page';
-import { HomePage } from 'cont_backup/src/app/home/home.page';
-import { ModalPageModule } from './modal/modal.module';
 
 @Component({
   selector: 'app-root',
@@ -18,16 +16,18 @@ export class AppComponent implements OnInit{
   Clock = Date.now();
   inputValue :string;
 
-  constructor(private platform: Platform,private splashScreen: SplashScreen,private statusBar: StatusBar,private storage: Storage,private rootPage:Router, private alertController:AlertController, private soma:ModalPage, private modal:ModalPage) {
+  constructor(private platform: Platform,private splashScreen: SplashScreen,private statusBar: StatusBar,private storage: Storage,private router:Router, private alertController:AlertController, private modal:ModalPage) {
     this.initializeApp();
 
 
   this.platform.ready().then(()=>{
     this.storage.get('introShown').then((result) => {
         if(result){
-          this.rootPage.navigateByUrl('home');
+          this.router.navigateByUrl('home');
         }else {
-          this.rootPage.navigateByUrl('intro')
+          this.storage.set("meus-registros", []);
+          this.storage.set("historico", []);
+          this.router.navigateByUrl('intro')
           this.storage.set('introShown', true);
         }
       });
@@ -39,7 +39,6 @@ export class AppComponent implements OnInit{
     setInterval(() => {
       this.Clock = Date.now();
       this.trocademestest();
-      this.modal.listarRegistros();
     }, 1000);
   }
   
@@ -67,5 +66,5 @@ export class AppComponent implements OnInit{
       this.presentAlert();
       this.storage.set("meus-registros", []);
     }
-}
+  }
 }

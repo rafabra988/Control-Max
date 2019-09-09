@@ -1,5 +1,12 @@
-.close,
-.historico{
+.letra{
+    position: fixed;
+    width: 25%;
+    top:7%;
+    left:44%;
+    z-index: 3;
+}
+
+.close{
     font-size: 20px;
     position: absolute;
     top: 50%;
@@ -10,7 +17,6 @@
     z-index: 3;
 }
 
-.hist,
 .icon{
     position: fixed;
     width: 45px;
@@ -19,20 +25,7 @@
     top: 5%;
     border:none;
     background: white;
-}
-
-.hist{
-    right: 14%;
-}
-
-.icon{
     left: 87%;
-}
-
-.campo{
-    height: 90%;
-    margin-top:20%;
-    z-index: 0;
 }
 
 #test{
@@ -42,11 +35,25 @@
     display: none;
 }
 
-.letra{
+.lixeira{
     position: fixed;
-    top:8%;
-    left:5%;
+    width: 45px;
+    height: 45px;
     z-index: 3;
+    top: 5%;
+    border:none;
+    background: white;
+    left: 5%;
+}
+
+.campo{
+    height: 90%;
+    margin-top:20%;
+    z-index: 0;
+}
+
+.money{
+    color: black;
 }
 
 .clear{
@@ -59,6 +66,9 @@
     -webkit-backdrop-filter: blur(10px);
 }
 
-.money{
-    color: black;
-}
+/*#test{
+    padding: 10%;
+    margin-left:8%;
+    margin-top:40%;
+    display: none;
+}*/

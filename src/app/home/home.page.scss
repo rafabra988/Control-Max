@@ -22,14 +22,15 @@ ion-content {
 
  
  .vicon{
-     position: absolute;
-     color: white !important;
-     margin-top: 40%;
-     margin-left: 85%;
-     border: none;
-     width: 30px;
-     height: 30px;
-     border: none;
+    position: absolute;
+    color: white !important;
+    margin-top: 40%;
+    margin-left: 85%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: rgba(0,0,0,0)
  }
 
  .icon{
@@ -47,6 +48,7 @@ ion-content {
     border: none;
     margin-left:44%;
     margin-top: 20%;
+    background: rgba(0,0,0,0)
  }
 
  .badd{

@@ -13,3 +13,22 @@
     max-width: 60%;
     margin: 36px 0;
   }
+
+  ion-slides{
+    height: 100%;
+    width: 100%;
+  }
+
+  ion-slide{
+    padding-top: 20%; 
+    height: 100%;
+    width: 100%;
+  }
+
+  @media (max-width:320px){
+    @media (max-height:568px){
+      ion-slide{
+        padding-top: 0%; 
+      }
+    }
+  }

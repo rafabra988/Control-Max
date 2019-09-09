@@ -29,17 +29,6 @@ export class StorageService {
     });
   }
 
-  addhistoric(registro:registro): Promise<any>{
-    return this.storage.get(historico_KEY).then((registros:registro[]) => {
-      if(registros){
-        registros.push(registro);
-        return this.storage.set(historico_KEY, registros);
-      }else{
-        return this.storage.set(historico_KEY, [registro]);
-      }
-    });
-  }
-
   listaRegistros(): Promise<registro[]>{
     return this.storage.get(REGISTRO_KEY);
   }
@@ -58,6 +47,41 @@ export class StorageService {
         }
       }
       return this.storage.set(REGISTRO_KEY, toKeep);
+    })
+  }
+
+  ///historico service
+
+  addhistoric(registro:registro): Promise<any>{
+    return this.storage.get(historico_KEY).then((registros:registro[]) => {
+      if(registros){
+        registros.push(registro);
+        return this.storage.set(historico_KEY, registros);
+      }else{
+        return this.storage.set(historico_KEY, [registro]);
+      }
+    });
+  }
+
+  listaHistorico(): Promise<registro[]>{
+    return this.storage.get(historico_KEY);
+  }
+
+  deletarHistorico(id:number): Promise<registro>{
+    return this.storage.get(historico_KEY).then((historico:registro[]) => {
+      if(!historico || historico.length === 0){
+        return null;
+      }
+      
+      let toKeep: registro[] = [];
+      
+      for(let r of historico){
+        if(r.id !== id){
+          toKeep.push(r);
+        }
+      }
+      console.log("foi")
+      return this.storage.set(historico_KEY, toKeep);
     })
   }
 }
