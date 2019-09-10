@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { ModalPage } from './modal/modal.page';
+import { timer } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,7 @@ export class AppComponent implements OnInit{
 
   Clock = Date.now();
   inputValue :string;
+  showSplash = true;
 
   constructor(private platform: Platform,private splashScreen: SplashScreen,private statusBar: StatusBar,private storage: Storage,private router:Router, private alertController:AlertController, private modal:ModalPage) {
     this.initializeApp();
@@ -33,6 +36,7 @@ export class AppComponent implements OnInit{
       });
     });
   }
+  
 
   
   ngOnInit(){
@@ -46,7 +50,10 @@ export class AppComponent implements OnInit{
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      timer(3000).subscribe(()=> this.showSplash = false);
     });
+
+
   }
 
   async presentAlert() {
