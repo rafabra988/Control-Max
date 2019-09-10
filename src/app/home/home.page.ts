@@ -6,6 +6,7 @@ import { anicacaoSaida } from '../testeAnimacao/sair';
 import { NovogastoPage } from '../novogasto/novogasto.page';
 import { registro } from '../services/storage.service';
 import { Storage } from '@ionic/storage';
+import { HistoricoPage } from '../historico/historico.page';
 
 @Component({
   selector: 'app-home',
@@ -19,9 +20,12 @@ export class HomePage implements OnInit{
   moeda:string;
   storageService: any;
   testii:string;
+  balanco:number;
+  a:number; 
+  b:number;
   
   
-  constructor(public modalController: ModalController, private storage:Storage) { }
+  constructor(public modalController: ModalController, private storage:Storage, private modal:ModalPage, private hist:HistoricoPage) { }
 
   formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -36,11 +40,33 @@ export class HomePage implements OnInit{
     
     setInterval(() => {
       this.pegarSalario();
+      this.total();
+      this.modal.listarRegistros();
+      this.hist.listarHistorico();
     }, 1000);
     
     // this.plt.ready().then(()=>{
       //this.pegarSalario();
    //}) 
+   this.balancos();
+  }
+
+  balancos(){
+    this.storage.get("salario").then((a1) => {
+       this.a= a1
+      })
+      this.storage.get("total").then((b1) => {
+        this.b= b1
+      })
+      this.balanco = this.a - this.b;   
+      console.log(this.balanco)
+  }
+  
+
+  total(){
+    this.storage.get("total").then((soma) =>{
+      this.testii = this.formatter.format(soma);
+    })
   }
 
   async presentModal() {

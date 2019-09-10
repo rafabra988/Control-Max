@@ -49,11 +49,15 @@ export class ModalPage implements OnInit{
     this.storageService.listaRegistros().then(registros =>{
       this.registros = registros;
       this.total = 0;
+      if(this.registros){
+
         this.registros.forEach(element => {
           this.total += element.valor;
         });
         this.storage.set("total", this.total)
-        } 
+      } 
+    }
+    
     );
   }
 
