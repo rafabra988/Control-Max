@@ -29,7 +29,7 @@ export class HistoricoPage implements OnInit {
   }
 
   msg(){
-    if(this.historico.length !== 0){
+    if(this.historico.length !== 0 || !this.historico){
       document.getElementById("test").style.display = "none";
     }else{
       document.getElementById("test").style.display = "block";
@@ -42,13 +42,13 @@ export class HistoricoPage implements OnInit {
     });
   }
 
-  deletarHistorico(historico:registro){
+  /*deletarHistorico(historico:registro){
     this.storageService.deletarHistorico(historico.id).then(hist=>{
       this.showToast('Compra Deletada!');
       this.mylist.closeSlidingItems();
-      this.listarHistorico();
+       setTimeout(()=> this.listarHistorico(), 100)  
     });
-  }
+  }*/
 
   async showToast(msg) {
     const toast = await this.toastController.create({
@@ -79,7 +79,7 @@ export class HistoricoPage implements OnInit {
           text: 'Sim',
           handler: () => {
             this.storage.set("historico", []);
-            this.listarHistorico();
+            setTimeout(()=> this.listarHistorico(), 100)
           }
         }
       ]

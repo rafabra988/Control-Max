@@ -13,6 +13,7 @@ import { IntroPage } from './intro/intro.page';
 import { AjustesPage } from './ajustes/ajustes.page';
 import { ModalPage } from './modal/modal.page';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HistoricoPage } from './historico/historico.page';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     IonicStorageModule.forRoot()
   ],
   providers: [
+    HistoricoPage,
     ModalPage,
     AjustesPage,
     IntroPage,

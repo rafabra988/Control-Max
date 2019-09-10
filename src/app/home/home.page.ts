@@ -6,6 +6,7 @@ import { anicacaoSaida } from '../testeAnimacao/sair';
 import { NovogastoPage } from '../novogasto/novogasto.page';
 import { registro } from '../services/storage.service';
 import { Storage } from '@ionic/storage';
+import { HistoricoPage } from '../historico/historico.page';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,7 @@ export class HomePage implements OnInit{
   b:number;
   
   
-  constructor(public modalController: ModalController, private storage:Storage, private modal:ModalPage) { }
+  constructor(public modalController: ModalController, private storage:Storage, private modal:ModalPage, private hist:HistoricoPage) { }
 
   formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -41,6 +42,7 @@ export class HomePage implements OnInit{
       this.pegarSalario();
       this.total();
       this.modal.listarRegistros();
+      this.hist.listarHistorico();
     }, 1000);
     
     // this.plt.ready().then(()=>{
@@ -52,13 +54,12 @@ export class HomePage implements OnInit{
   balancos(){
     this.storage.get("salario").then((a1) => {
        this.a= a1
-       console.log(this.a)
-    })
-    this.storage.get("total").then((b1) => {
-       this.b= b1
-    })
-    this.balanco = this.a - this.b;
-    console.log(this.balanco)
+      })
+      this.storage.get("total").then((b1) => {
+        this.b= b1
+      })
+      this.balanco = this.a - this.b;   
+      console.log(this.balanco)
   }
   
 
