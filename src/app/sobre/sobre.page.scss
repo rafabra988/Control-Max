@@ -13,3 +13,9 @@ p{
     padding: 10% 10% 10% 10%;
     text-align: justify;
 }
+
+@media (min-width: 650px){
+    h5{
+        margin-left: 41%;
+    }
+}

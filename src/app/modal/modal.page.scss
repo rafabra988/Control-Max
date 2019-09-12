@@ -62,3 +62,14 @@
 .money{
     color: black;
 }
+
+@media (min-width: 650px){
+    #test{
+        margin-top: 20%;
+        margin-left: 15%;
+    }
+
+    .campo{
+        margin-top: 8%;
+    }
+}

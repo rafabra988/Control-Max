@@ -24,8 +24,8 @@ ion-content {
  .vicon{
     position: absolute;
     color: white !important;
-    margin-top: 40%;
-    margin-left: 85%;
+    bottom: 5%;
+    right: 5%;
     border: none;
     width: 30px;
     height: 30px;
@@ -34,8 +34,8 @@ ion-content {
  }
 
  .icon{
-    width: 15px;
-    height: 15px;
+    width: 80%;
+    height: 80%;
     display: block;
     margin-left: 23%;
     margin-top: 23%;
@@ -46,7 +46,7 @@ ion-content {
     width: 12%;
     height: 8%;
     border: none;
-    margin-left:44%;
+    margin-left:44% !important;
     margin-top: 20%;
     background: rgba(0,0,0,0)
  }
@@ -97,12 +97,24 @@ ion-content {
     }
 }
 
-@media (min-width: 900px){
+@media (min-width: 650px){
     .iontes{
         height: 800px;
-        width: 800px;
+        width: 700px;
+        margin-top:5%;
     }
     .baddd{
         margin-left:50%;
+    }
+
+    .gasto{
+        padding-top: 21%;
+        margin-left: 35%;
+        margin-bottom: 23%;
+        margin-top: 15%;
+    }
+
+    .baddd{
+        margin-top: 7%;
     }
 }

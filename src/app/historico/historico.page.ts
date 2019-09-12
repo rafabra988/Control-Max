@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './historico.page.html',
   styleUrls: ['./historico.page.scss'],
 })
-export class HistoricoPage implements OnInit {
+export class HistoricoPage {
 
   historico: registro[] = [];
   loop:any;
@@ -18,14 +18,11 @@ export class HistoricoPage implements OnInit {
 
   constructor(private nav:NavController,private storageService:StorageService, private toastController:ToastController, private storage:Storage, private alertController:AlertController) { }
 
-  ngOnInit() {
+  ionViewWillEnter(){
+    this.listarHistorico();
     this.loop = setInterval(() => {
       this.msg();
     }, 1);
-  }
-
-  ionViewWillEnter(){
-    this.listarHistorico();
   }
 
   msg(){

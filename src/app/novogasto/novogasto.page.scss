@@ -27,3 +27,13 @@ ion-button{
 ion-input{
     width: 90%;
 }
+
+@media (min-width: 650px){
+    .title{
+        margin: 5% 10% 5% 10%;
+    }
+
+    .caixa{
+        margin-top: 20%;
+    }
+}

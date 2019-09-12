@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './modal.page.html',
   styleUrls: ['./modal.page.scss'],
 })
-export class ModalPage implements OnInit{
+export class ModalPage{
 
   registros: registro[] = [];
   parar:any;
@@ -19,17 +19,13 @@ export class ModalPage implements OnInit{
   @ViewChild('mylist', {static: false})mylist: IonList;
   
   constructor(private modalController: ModalController,private router:Router , private storageService: StorageService, private toastController: ToastController, private storage:Storage) {
-  
   }
-
-  ngOnInit(){
+  
+  ionViewWillEnter(){
+    this.listarRegistros();
     this.parar = setInterval(() => {
       this.msg();
     }, 1);
-  }
-
-  ionViewWillEnter(){
-    this.listarRegistros();
   }
 
   msg(){

@@ -50,15 +50,17 @@ export class HomePage implements OnInit{
    this.balancos();
   }
 
-  balancos(){
+  async balancos(){
     this.storage.get("salario").then((a1) => {
        this.a= a1
+       console.log("a "+this.a);
       })
       this.storage.get("total").then((b1) => {
         this.b= b1
+        console.log("b "+this.b)
       })
       this.balanco = this.a - this.b;   
-      console.log(this.balanco)
+      await console.log("balanco "+this.balanco)
   }
   
 
