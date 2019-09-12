@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService, registro } from '../services/storage.service';
-import { IonList, ToastController, AlertController, Platform } from '@ionic/angular';
+import { IonList, ToastController, AlertController, Platform, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class HistoricoPage implements OnInit {
 
   @ViewChild('mylist', {static: false})mylist: IonList;
 
-  constructor(private storageService:StorageService, private toastController:ToastController, private storage:Storage, private alertController:AlertController, private router:Router) { }
+  constructor(private nav:NavController,private storageService:StorageService, private toastController:ToastController, private storage:Storage, private alertController:AlertController) { }
 
   ngOnInit() {
     this.loop = setInterval(() => {
@@ -60,7 +60,7 @@ export class HistoricoPage implements OnInit {
   
   histfechar(){
     clearInterval(this.loop);
-    this.router.navigateByUrl('home')
+    this.nav.pop()
   }
 
   async apagar() {

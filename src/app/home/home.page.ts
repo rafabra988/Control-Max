@@ -24,7 +24,6 @@ export class HomePage implements OnInit{
   a:number; 
   b:number;
   
-  
   constructor(public modalController: ModalController, private storage:Storage, private modal:ModalPage, private hist:HistoricoPage) { }
 
   formatter = new Intl.NumberFormat('pt-BR', {
