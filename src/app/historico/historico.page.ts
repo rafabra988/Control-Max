@@ -26,12 +26,16 @@ export class HistoricoPage {
   }
 
   msg(){
-    if(this.historico.length !== 0 || !this.historico){
-      document.getElementById("test").style.display = "none";
-    }else{
-      document.getElementById("test").style.display = "block";
-    }
-}
+    this.storage.get('historico').then(test => {
+      if(test){
+        if(this.historico.length !== 0){
+          document.getElementById("test").style.display = "none";
+        }else{
+          document.getElementById("test").style.display = "block";
+        }
+      }
+    })
+  }
 
   listarHistorico(){
     this.storageService.listaHistorico().then(lhistorico =>{

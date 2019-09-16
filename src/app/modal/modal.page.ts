@@ -29,11 +29,15 @@ export class ModalPage{
   }
 
   msg(){
-      if(this.registros.length !== 0){
-        document.getElementById("test").style.display = "none";
-      }else{
-        document.getElementById("test").style.display = "block";
+    this.storage.get('meus-registros').then(test => {
+      if(test){
+        if(this.registros.length !== 0){
+          document.getElementById("test").style.display = "none";
+        }else{
+          document.getElementById("test").style.display = "block";
+        }
       }
+    })
   }
 
   fechar() {
